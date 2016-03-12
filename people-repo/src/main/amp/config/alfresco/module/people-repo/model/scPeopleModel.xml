@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Definition of new Model -->
+<model name="scp:somecoPeopleModel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+
+	<!-- Optional meta-data about the model -->
+	<description>Someco People Model</description>
+	<author>Jeff Potts</author>
+	<version>1.0</version>
+
+	<!-- Imports are required to allow references to definitions in other models -->
+	<imports>
+		<!-- Import Alfresco Dictionary Definitions -->
+		<import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
+		<!-- Import Alfresco Content Domain Model Definitions -->
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+	</imports>
+
+	<!-- Introduction of new namespaces defined by this model -->
+	<namespaces>
+		<namespace uri="http://www.someco.com/model/people/1.0" prefix="scp" />
+	</namespaces>
+	<constraints>
+		<constraint name="scp:shirtSizeList" type="LIST">
+            <parameter name="allowedValues">
+                <list>
+                    <value>XS</value>
+					<value>S</value>
+                    <value>M</value>
+                    <value>L</value>
+                    <value>XL</value>
+                    <value>XXL</value>
+                </list>
+            </parameter>
+        </constraint>
+    </constraints>
+
+	<aspects>
+		<aspect name="scp:person">
+			<title>Someco Person</title>
+			<properties>
+				<property name="scp:shirtSize">
+					<type>d:text</type>
+					<constraints>
+						<constraint ref="scp:shirtSizeList" />
+					</constraints>					
+				</property>
+				<property name="scp:significantOther">
+				    <type>d:text</type>
+				</property>
+				<property name="scp:birthDate">
+					<type>d:date</type>
+				</property>
+				<property name="scp:likesNeilDiamond">
+					<type>d:boolean</type>
+					<default>false</default>
+				</property>
+			</properties>
+		</aspect>
+	</aspects>
+</model>
+
